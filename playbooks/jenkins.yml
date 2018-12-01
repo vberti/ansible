@@ -1,0 +1,7 @@
+---
+- hosts: 192.168.70.10
+  vars:
+  - jenkins_java_options: "-Djenkins.install.runSetupWizard=true"
+  roles:
+  - geerlingguy.jenkins
+  
