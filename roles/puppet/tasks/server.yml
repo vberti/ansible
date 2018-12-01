@@ -1,0 +1,20 @@
+---
+- name: Instala o Puppet Server para RHEL7
+  yum: 
+    name: puppetserver
+    state: present
+  when: ansible_os_family =='RedHat'
+
+- name: Instala o Puppet Server para Ubuntu
+  apt:
+    name: puppetserver
+    state: present
+    update_cache: yes
+  when: ansible_distribution == 'Ubuntu'
+
+- name: Inicia o servico do Puppet
+  service:
+    name: puppetserver
+    state: started
+    enabled: true
+
