@@ -1,0 +1,19 @@
+---
+- name: Minha primeira playbook
+  hosts: dexter
+  vars:
+    - pacotes: vim,htop,ntp,ccze
+       # - vim
+       # - htop
+  tasks:
+    - name: Pacotes RedHat
+      yum:
+        name: '{{ pacotes }}'
+        state: present   
+      when: ansible_os_family == 'RedHat'
+   
+    - name: Pacotes Debian
+      apt:
+        name: '{{ pacotes }}'
+        state: present
+      when: ansible_os_family == 'Debian'
