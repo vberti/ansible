@@ -1,0 +1,19 @@
+---
+# tasks file for ambiente
+- name: cria o container do ambiente blue/green
+  docker_container:
+    name:  blue
+    image: httpd
+    state: started
+    restart_policy: always
+    volumes:
+      - /blue:/usr/local/apache2/htdocs
+
+- name: GREEN
+  docker_container:
+    name: green
+    image: httpd
+    state: started
+    restart_policy: always
+    volumes:
+      - /green:/usr/local/apache2/htdocs/
